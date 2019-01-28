@@ -42,7 +42,15 @@
 
       // Shortcircuiting of logical statements
 
+
       // Now let's play with scoping of variables
+      for (var i=1; i<6; i++) {
+        document.getElementById('e'+i).addEventListener('click', function() {
+          // if i is a var, it's scoped to the whole doc, iterates, then all clicks alert 6
+          // if i is a let, it's scoped within the loop and clicks alert for the given i value: 1,2,3,4,5
+          alert(i);
+        });
+      }
 
       // How do two script tags interact with each other?
 
