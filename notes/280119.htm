@@ -37,11 +37,18 @@
 
     <script>
       // Let's explore some Javascript types!
+      console.log(typeof(1.2));
+      console.log(typeof(undefined));
 
       // Comparison weirdness
+      console.log(0 == "0"); // aggressive casting
+      console.log('0' == 0);
+      console.log('0' === 0); // explicit comp
 
       // Shortcircuiting of logical statements
-
+      let x = 1;
+      true || x+1 || false; // true short-circuits the OR and x is never incremented
+      console.log(x);
 
       // Now let's play with scoping of variables
       for (var i=1; i<6; i++) {
