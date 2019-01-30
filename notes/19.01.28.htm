@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>INFO 3300 - January 28</title>
+
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700|Raleway:400,700" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="../css/normalize.css">
+<link rel="stylesheet" type="text/css" href="../css/skeleton.css">
+<link rel="stylesheet" type="text/css" href="../css/custom-style.css">
+
+</head>
+<body>
+  <div class="container larger">
+    <h3>Prompt for Monday, January 28</h3>
+    <p>
+    	HW1 is available on <a href="https://cmsx.cs.cornell.edu">CMS</a>. If you can't access CMS, let me know. <br/>
+    	Sign up for <a href="https://campuswire.com/p/G3730333F">CampusWire</a>. The signup PIN is 6422.
+    </p>
+    <p>
+      You can access these files from the <a href="https://github.com/jeffrz/info3300-spr2019">course Github repository</a> Here is an <a href="http://rogerdudler.github.io/git-guide/">informal guide to git</a>.
+    </p>
+    <p>
+      To develop efficiently, have a local web server running. Python has a simple, built-in server. Use <tt>python -m http.server</tt> for python 3; use <tt>python -m SimpleHTTPServer 8000</tt> for python 2 (execute python in cmd for version number).
+    </p>
+    <p>
+      We will be working in Javascript. What are some of the unusual aspects of this language? View source and open a console...
+    </p>
+
+    <p> Let's test scopes: <br/>
+      <span id="e1">111</span> <br/>
+      <span id="e2">222</span> <br/>
+      <span id="e3">333</span> <br/>
+      <span id="e4">444</span> <br/>
+      <span id="e5">555</span>
+    </p>
+
+
+    <script>
+      // Let's explore some Javascript types!
+      console.log(typeof(1.2));
+      console.log(typeof(undefined));
+
+      // Comparison weirdness
+      console.log(0 == '0'); // aggressive casting
+      console.log('0' == 0);
+      console.log('0' === 0); // explicit comp
+
+      // Shortcircuiting of logical statements
+      let x = 1;
+      true || x+1 || false; // true short-circuits the OR and x is never incremented
+      console.log(x);
+
+      // Now let's play with scoping of variables
+      for (var i=1; i<6; i++) {
+        document.getElementById('e'+i).addEventListener('click', function() {
+          // if i is a var, it's scoped to the whole doc, iterates, then all clicks alert 6
+          // if i is a let, it's scoped within the loop and clicks alert for the given i value: 1,2,3,4,5
+          alert(i);
+        });
+      }
+
+      // How do two script tags interact with each other?
+
+    </script>
+
+
+
+    <p>
+      Review <a href="http://www.json.org">Javascript Object Notation</a>.
+    </p>
+
+    <script>
+
+    // '[{"name": "rzeszotarski", "office": 213 }, { "name": "Mimno", "office": 205 }, { "name": "Zhang", "number": 244 }]'
+    // complexItem = {'list': ['esca,ped?', 'Squo\'tes', 'Dquo"tes', 'fanc¥'], 'nested': {'undefined': undefined, 'defined': 3.1415926535}, 'bignum': Infinity, 'notnum': NaN, 'bool': true};
+
+    // Time permitting, cross-browser compatibility w/Can I Use and Usage Share of Browsers page
+
+    </script>
+
+  </div>
+</body>
+</html>
