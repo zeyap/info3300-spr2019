@@ -45,7 +45,7 @@
   <h5>HTML for today:</h5>
 
   <!-- Here's a standard HTML div element with an ID and a class -->
-  <div id="d1" random="what?" class="header" style="color: red;">
+  <div id="d1" newproperty="custom_property" class="header" style="color: red;">
     Hello.
   </div>
 
@@ -97,10 +97,12 @@
   console.log(obj);
   console.log(JSON.stringify(obj)); // Here is a JSON string for that object
 
-  //This one won't parse because it breaks JSON specifications
+  // This one won't parse because it breaks JSON specifications
   let badStr = '{"list": ["commas,", "single_quo\'tes", "double_quo"tes", "@sÃ§i|"], "nestedObject": {"undefined": undefined, "defined": 3.1415926535}, "Infinity": Infinity, "NaN": NaN, "bool": true}'
   //console.log(JSON.parse(badStr));
-  //Here is the fixed version, note escaped quotes, eliminated undefined, and no reserved numbers
+  // Here is the fixed version, note escaped quotes, eliminated undefined, and no reserved numbers
+  // The \' is present because I used '' to create the string and need to escape quotes within it
+  // The \\" is present to escape the backslash so that the JSON string has \" in it, which is a required by the spec
   let goodStr = '{"list": ["commas,", "single_quo\'tes", "double_quo\\"tes", "@sçi|"], "nestedObject": {"undefined": null, "defined": 3.1415926535}, "bool": true}'
   console.log(goodStr);
   console.log(JSON.parse(goodStr));
@@ -129,13 +131,13 @@
     console.log("Displaying: "+f()); // JS happily casts whatever f() returns to a String
   }
 
-  display(favoriteAnimal);  // Notice there are no () here, it's just sending over the function
+  display(favoriteAnimal); // Notice there are no () here, it's just sending over the function
   display(favoriteColor);
 
   // Functions can also RETURN functions!
   let mult = function(number) {
     return function() { return number * 100; };
-  }
+  };
   console.log(mult(3)()); // Extra () here is to execute the function that mult returned
   // Used in things like memoization and lazy evaluation, see Resig tutorial
 
@@ -145,6 +147,8 @@
   console.log(div);
   div.innerText = "Goodbye"; // Modify the text inside it
   div.style.color = "green"; // Change style
+  // we can retrieve any HTML attributes with a getter command
+  console.log(div.getAttribute("newproperty"));
 
   let textentry = document.getElementById("entry");
   console.log(textentry.value); // Things inside of the text box sit inside of value instead of innerText
