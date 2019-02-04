@@ -1,0 +1,200 @@
+<html>
+<head>
+
+    <title>INFO 3300: Introduction to SVG</title>
+
+    <style>
+        body { font-family: 'Alegreya Sans', Calibri, sans-serif; }
+        svg { border: solid #ccc 1px; }
+    </style>
+
+</head>
+
+
+<body>
+
+<h2>Introduction to SVG</h2>
+
+<br>
+
+<h3>Announcements</h3>
+<div>
+    <ul>
+        <li>Homework 1 due today at 11:59pm!</li>
+        <li>Homework 2 is available on CMS and will be due next Monday at 11:59pm!</li>
+        <li>Waitlist is done!</li>
+    </ul>
+</div>
+
+<br>
+
+<h3>SVG Resources</h3>
+<div>
+    <ul>
+        <li> <a href="https://flaviocopes.com/svg/">https://flaviocopes.com/svg/</a></li>
+        <li> <a href="https://alignedleft.com/tutorials/d3/an-svg-primer">https://alignedleft.com/tutorials/d3/an-svg-primer</a></li>
+        <li> <a href="http://tutorials.jenkov.com/svg/svg-transformation.html">http://tutorials.jenkov.com/svg/svg-transformation.html</a></li> 
+        <li> <a href="https://www.sarasoueidan.com/blog/svg-transformations/">https://www.sarasoueidan.com/blog/svg-transformations/</a></li>
+    </ul>
+</div>
+
+<br>
+
+<h3>Rectangles and Coordinates</h3>
+
+<p>The coordinate system starts at the top left corner. Positive y values move down towards the bottom. Positive x values move towards the right. We can use CSS to apply styles to the figures.</p>
+
+<br>
+
+<svg height=500 width=500 style="border:3px solid crimson" viewbox="0 0 500 500">
+    <rect x=100 y=50 height=100 width=200 style="fill:deepskyblue; stroke:darkviolet; stroke-width:10" />
+    <rect x=250 y=100 height=200 width=100 style="fill:lightpink; opacity:0.6" />
+</svg>
+
+<br><br>
+
+<h3>Paths</h3>
+
+<p>This is the most complicated SVG element, but also one of the most useful. It contains <a href="https://www.w3.org/TR/SVG/paths.html#PathData">a tiny programming language</a>.</p>
+
+<br>
+
+<svg height=100 width=100 viewbox="0 0 100 100">
+
+    <path style="stroke:#ccc; stroke-width:1" d="M 0 10 H 100" />
+    <path style="stroke:#ccc; stroke-width:1" d="M 0 20 H 100" />
+    <path style="stroke:#ccc; stroke-width:1" d="M 0 30 H 100" />
+    <path style="stroke:#ccc; stroke-width:1" d="M 0 40 H 100" />
+    <path style="stroke:#ccc; stroke-width:1" d="M 0 50 H 100" />
+    <path style="stroke:#ccc; stroke-width:1" d="M 0 60 H 100" />
+    <path style="stroke:#ccc; stroke-width:1" d="M 0 70 H 100" />
+    <path style="stroke:#ccc; stroke-width:1" d="M 0 80 H 100" />
+    <path style="stroke:#ccc; stroke-width:1" d="M 0 90 H 100" />
+
+    <path style="stroke:#ccc; stroke-width:1" d="M 10 0 V 100" />
+    <path style="stroke:#ccc; stroke-width:1" d="M 20 0 V 100" />
+    <path style="stroke:#ccc; stroke-width:1" d="M 30 0 V 100" />
+    <path style="stroke:#ccc; stroke-width:1" d="M 40 0 V 100" />
+    <path style="stroke:#ccc; stroke-width:1" d="M 50 0 V 100" />
+    <path style="stroke:#ccc; stroke-width:1" d="M 60 0 V 100" />
+    <path style="stroke:#ccc; stroke-width:1" d="M 70 0 V 100" />
+    <path style="stroke:#ccc; stroke-width:1" d="M 80 0 V 100" />
+    <path style="stroke:#ccc; stroke-width:1" d="M 90 0 V 100" />
+
+    <path style="stroke:limegreen; stroke-width:3px; fill:plum" d="M 10 10 H 50 V 30 L 30 60 Z" />
+    <path style="stroke:limegreen; stroke-width:3px; fill:plum" d="M 50 50 h 50 L 80 70 L 100 90 H 50 Z" />
+
+</svg>
+
+<br><br>
+
+<h3>Longer Paths</h3>
+
+<p>In-class project: Make a plot like Minard's.</p>
+
+<br>
+
+<svg height="300" width="600">
+    <path d="M 23 123 L 64 110 114 123 202 106 290 102 360 125 419 106 476  55 524  70 574  42 579  51 520  83 480 73 425 124 364 148 291 122 206 137 108 167  68 163  41 170" style="fill: rgb(225, 204, 172)"/>
+    <path d="M 40 167 L 95 166 147 170 168 176 191 163 230 184 261 178 307 158 367 146 422 125 459 104 506  82 564  96 568  57 578  51 584  61 580  63 576 100 563 108 505  94 465 112 425 131 367 150 310 162 265 182  235 191 227 190 190 166 169 178 149 172  97 169  40 171" style="fill: black"/>
+</svg>
+
+<br><br>
+
+<h3>Transformations</h3>
+
+<p>Transformations are another useful (but a bit tricky) tool. How do we stretch, rotate, and shift elements, and how does the order of these operations affect the result?</p>
+
+<p>Wrapping all elements in a translate() transformation moves the coordinate system. We often want to do this to add a margin around a plot while keeping our mapping from data to x,y positions simple.</p>
+
+<br>
+
+<p>First, let's mark the origin, (0,0).</p>
+
+<svg height="200" width="200">
+    <line x1="-6" x2="6" y1="0" y2="0" style="stroke: black"/>
+    <line y1="-6" y2="6" x1="0" x2="0" style="stroke: black"/>
+ </svg>
+
+<p>Now let's move the origin to the center. The g tag assigns properties to sets of elements.</p>
+
+<svg height="200" width="200">
+    <g transform="translate(100,100)">
+        <line x1="-6" x2="6" y1="0" y2="0" style="stroke: black"/>
+        <line y1="-6" y2="6" x1="0" x2="0" style="stroke: black"/>
+    </g>
+</svg>
+
+<p>Let's create some circles in our translated space.</p>
+
+<svg height="200" width="200">
+    <g transform="translate(100,100)">
+        <line x1="-6" x2="6" y1="0" y2="0" style="stroke: black"/>
+        <line y1="-6" y2="6" x1="0" x2="0" style="stroke: black"/>
+        <circle r="8" cx="0" cy="0" style="fill:aquamarine; opacity:0.6" />
+        <circle r="10" cx="-20" cy="-40" style="fill:lightsalmon; opacity:0.6" />
+        <circle r="16" cx="-50" cy="-60" style="fill:plum; opacity:0.6" \>
+    </g>
+</svg>
+
+<p>Let's perform a translation on one of the circles.</p>
+
+<svg height="200" width="200">
+
+    <g transform="translate(100,100)">
+        <line x1="-6" x2="6" y1="0" y2="0" style="stroke: black"/>
+        <line y1="-6" y2="6" x1="0" x2="0" style="stroke: black"/>
+        <g transform="translate(50,0)">
+            <circle r="8" cx="0" cy="0" style="fill:aquamarine; opacity:0.6" />
+        </g>
+        <circle r="10" cx="-20" cy="-40" style="fill:lightsalmon; opacity:0.6" />
+        <circle r="16" cx="-50" cy="-60" style="fill:plum; opacity:0.6" \>
+    </g>
+</svg>
+
+<p>Let's both perform a translation and scale one of the circles.</p>
+
+<svg height="200" width="200">
+    <g transform="translate(100,100)">
+        <line x1="-6" x2="6" y1="0" y2="0" style="stroke: black"/>
+        <line y1="-6" y2="6" x1="0" x2="0" style="stroke: black"/>
+        <g transform="translate(50,0) scale(1.5)">
+            <circle r="8" cx="0" cy="0" style="fill:aquamarine; opacity:0.6" />
+        </g>
+        <circle r="10" cx="-20" cy="-40" style="fill:lightsalmon; opacity:0.6" />
+        <circle r="16" cx="-50" cy="-60" style="fill:plum; opacity:0.6" \>
+    </g>
+</svg>
+
+<p>The order matters! What happens if we scale first and then perform a translation?</p>
+
+<svg height="200" width="200">
+    <g transform="translate(100,100)">
+        <line x1="-6" x2="6" y1="0" y2="0" style="stroke: black"/>
+        <line y1="-6" y2="6" x1="0" x2="0" style="stroke: black"/>
+        <g transform="scale(1.5) translate(50,0)">
+            <circle r="8" cx="0" cy="0" style="fill:aquamarine; opacity:0.6" />
+        </g>
+        <circle r="10" cx="-20" cy="-40" style="fill:lightsalmon; opacity:0.6" />
+        <circle r="16" cx="-50" cy="-60" style="fill:plum; opacity:0.6" \>
+    </g>
+</svg>
+
+<p>Finally, let's try rotating our coordinate system.</p>
+
+<svg height="200" width="200">
+    <g transform="translate(100,100) rotate(45)">
+        <line x1="-6" x2="6" y1="0" y2="0" style="stroke: black"/>
+        <line y1="-6" y2="6" x1="0" x2="0" style="stroke: black"/>
+        <g transform="scale(1.5) translate(50,0)">
+            <circle r="8" cx="0" cy="0" style="fill:aquamarine; opacity:0.6" />
+        </g>
+        <circle r="10" cx="-20" cy="-40" style="fill:lightsalmon; opacity:0.6" />
+        <circle r="16" cx="-50" cy="-60" style="fill:plum; opacity:0.6" \>
+    </g>
+</svg>
+
+<br><br>
+
+</body>
+</html>

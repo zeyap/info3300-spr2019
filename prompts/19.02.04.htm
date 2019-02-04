@@ -1,0 +1,118 @@
+<html>
+<head>
+
+    <title>INFO 3300: Introduction to SVG</title>
+
+    <style>
+        body { font-family: 'Alegreya Sans', Calibri, sans-serif; }
+        svg { border: solid #ccc 1px; }
+    </style>
+
+</head>
+
+
+<body>
+
+<h2>Introduction to SVG</h2>
+
+<br>
+
+<h3>Announcements</h3>
+<div>
+    <ul>
+        <li>Homework 1 due today at 11:59pm!</li>
+        <li>Homework 2 is available on CMS and will be due next Monday at 11:59pm!</li>
+        <li>Waitlist is done!</li>
+    </ul>
+</div>
+
+<br>
+
+<h3>SVG Resources</h3>
+<div>
+    <ul>
+        <li> <a href="https://flaviocopes.com/svg/">https://flaviocopes.com/svg/</a></li>
+        <li> <a href="https://alignedleft.com/tutorials/d3/an-svg-primer">https://alignedleft.com/tutorials/d3/an-svg-primer</a></li>
+        <li> <a href="http://tutorials.jenkov.com/svg/svg-transformation.html">http://tutorials.jenkov.com/svg/svg-transformation.html</a></li> 
+        <li> <a href="https://www.sarasoueidan.com/blog/svg-transformations/">https://www.sarasoueidan.com/blog/svg-transformations/</a></li>
+    </ul>
+</div>
+
+<br>
+
+<h3>Rectangles and Coordinates</h3>
+
+<p>The coordinate system starts at the top left corner. Positive y values move down towards the bottom. Positive x values move towards the right. We can use CSS to apply styles to the figures.</p>
+
+<br>
+
+<!-- Something here -->
+
+<br><br>
+
+<h3>Paths</h3>
+
+<p>This is the most complicated SVG element, but also one of the most useful. It contains <a href="https://www.w3.org/TR/SVG/paths.html#PathData">a tiny programming language</a>.</p>
+
+<br>
+
+<!-- Something here -->
+
+<br><br>
+
+<h3>Longer Paths</h3>
+
+<p>In-class project: Make a plot like Minard's. There is a useful comment included in the HTML below!</p>
+
+<br>
+
+<!-- The following may be useful:
+    rgb(225, 204, 172)
+    23 123  64 110 114 123 202 106 290 102 360 125 419 106 476  55 524  70 574  42 579  51 520  83 480 73 425 124 364 148 291 122 206 137 108 167  68 163  41 170
+    40 167  95 166 147 170 168 176 191 163 230 184 261 178 307 158 367 146 422 125 459 104 506  82 564  96 568  57 578  51 584  61 580  63 576 100 563 108 505  94 465 112 425 131 367 150 310 162 265 182  235 191 227 190 190 166 169 178 149 172  97 169  40 171
+-->
+
+<!-- Something here -->
+
+<br><br>
+
+<h3>Transformations</h3>
+
+<p>Transformations are another useful (but a bit tricky) tool. How do we stretch, rotate, and shift elements, and how does the order of these operations affect the result?</p>
+
+<p>Wrapping all elements in a translate() transformation moves the coordinate system. We often want to do this to add a margin around a plot while keeping our mapping from data to x,y positions simple.</p>
+
+<br>
+
+<p>First, let's mark the origin, (0,0).</p>
+
+<!-- Something here -->
+
+<p>Now let's move the origin to the center. The g tag assigns properties to sets of elements.</p>
+
+<!-- Something here -->
+
+<p>Let's create some circles in our translated space.</p>
+
+<!-- Something here -->
+
+<p>Let's perform a translation on one of the circles.</p>
+
+<!-- Something here -->
+
+<p>Let's both perform a translation and scale one of the circles.</p>
+
+<!-- Something here -->
+
+<p>The order matters! What happens if we scale first and then perform a translation?</p>
+
+<!-- Something here -->
+
+<p>Finally, let's try rotating our coordinate system.</p>
+
+<!-- Something here -->
+
+<br><br>
+
+</body>
+</html>
