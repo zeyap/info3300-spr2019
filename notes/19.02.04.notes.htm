@@ -48,6 +48,7 @@
 
 <svg height=500 width=500 style="border:3px solid crimson" viewbox="0 0 500 500">
     <rect x=100 y=50 height=100 width=200 style="fill:deepskyblue; stroke:darkviolet; stroke-width:10" />
+    <!-- origin at left corner -->
     <rect x=250 y=100 height=200 width=100 style="fill:lightpink; opacity:0.6" />
 </svg>
 
@@ -82,6 +83,8 @@
     <path style="stroke:#ccc; stroke-width:1" d="M 90 0 V 100" />
 
     <path style="stroke:limegreen; stroke-width:3px; fill:plum" d="M 10 10 H 50 V 30 L 30 60 Z" />
+    <!-- M: start, Z: close automatically -->
+
     <path style="stroke:limegreen; stroke-width:3px; fill:plum" d="M 50 50 h 50 L 80 70 L 100 90 H 50 Z" />
 
 </svg>
@@ -128,6 +131,7 @@
 <p>Let's create some circles in our translated space.</p>
 
 <svg height="200" width="200">
+    <!-- The <g> SVG element is a container used to group other SVG elements. -->
     <g transform="translate(100,100)">
         <line x1="-6" x2="6" y1="0" y2="0" style="stroke: black"/>
         <line y1="-6" y2="6" x1="0" x2="0" style="stroke: black"/>
