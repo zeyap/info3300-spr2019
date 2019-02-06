@@ -55,22 +55,111 @@
   <!--- Code for today's class --->
   <script id="notes">
 
-  // 1. How can we select elements? What is the difference between select() and selectAll()?
+    // 1. How can we select elements? What is the difference between select() and selectAll()?
 
+    let div1 = document.getElementById("d1");
+    console.log(div1); // We've seen this way of selecting elements in JS Week
 
+    let d3div1 = d3.select("#d1"); // d3 accepts CSS style selector strings
+    console.log(d3div1); // Selecting using d3 lets you use its advanced features
 
-  // 2. How can we create new elements, and set their attributes and styles?
+    // d3 has human readable helper functions for property edits
+    d3div1.text("Isn't d3 amazing?"); // Edit text
+    d3div1.style("color", "blue"); // Change CSS style
+    console.log(d3div1.style("color")); // Leave out second parameter for getter function
 
+    // d3 can chain functions (many functions return the selector that went in so you can use it again)
+    d3div1.text("Isn't d3 amazing?").style("color", "blue").style("background-color", "aquamarine").style("font-weight", "bold");
+    // In practice it is good style to use returns to space out the chaining so it is more legible
+    d3div1.text("Isn't d3 amazing?")
+        .style("color", "blue")
+        .style("background-color", "aquamarine")
+        .style("font-weight", "bold");
 
+    // selectAll grabs all applicable elements
+    let divs = d3.selectAll("div");
+    //divs.style("font-family", "Wingdings");
+    // BUT BE CAREFUL WITH SELECTORS - plain old div selected too much!
+    d3.selectAll(".hellodiv").style("background-color", "lightGrey"); // (because each of the divs we wanted had this hellodiv class)
 
-  // 3. How do we create lots of elements (but not using data just yet)?
+    // 2. How can we create new elements, and set their attributes and styles?
 
+    // First we get the SVG canvas
+    let svg = d3.select("svg");
 
+    svg.append("circle") // This creates a new circle element INSIDE svg
+        .attr("r", 10) // Keeps returning the same selection for more chaining
+        .attr("cx", 100) // When does this one execute? Before Y? After R?
+        .attr("cy", 100)
+        .style("fill", "red")
+        .on("click", function() { console.log("Circles are the best shape"); });
+    // instead of .onclick or addEventListener, d3 uses on()
 
-  // 4. How do we update the attributes of existing elements?
+    // 3. How do we create lots of elements (but not using data just yet)?
 
+    function randomPixel() {
+      return Math.random() * svg.attr("height");
+    }
 
+    // C style loop
+    for (let i = 0; i < 10; i++) {
+      svg.append("circle")
+          .attr("r", 5)
+          .attr("cx", randomPixel())
+          .attr("cy", randomPixel())
+          .style("fill", "red");
+    }
 
+    // JS style loop
+    var list = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    let colors = ["yellow", "blue", "aquamarine", "magenta"];
+    list.forEach(function(d, i) {
+      //the .forEach function is built into JS lists. It sends two parameters automatically to the function you give it
+      // the first parameter is the element it is currently on, and the second the index
+      // d and i are traditionally used, by anything can go there
+      // You can even just use a bare function() and forEach will just throw out the parameters
+      console.log(d, i);
+      // We can also introduce some other random elements
+      let color = colors[Math.floor(Math.random() * colors.length)]; // NOTE: float vs int issues mean we have to use Math.floor
+      svg.append("circle")
+          .attr("r", 12)
+          .attr("cx", randomPixel())
+          .attr("cy", randomPixel())
+          .style("fill", color);
+    }); // Note the semicolon!
+
+    //HERE IS AN ALTERNATE JS STYLE LOOP:
+    colors = ["yellow", "blue", "aquamarine", "magenta"];
+    colors.forEach(function(element, index) {
+      //the .forEach function is built into JS lists. It sends two parameters automatically to the function you give it
+      // the first parameter is the element it is currently on, and the second the index
+      // Here we iterate once through the list of colors, so we assign one circle to each color in the list, in order
+      console.log(element, index);
+      svg.append("circle")
+          .attr("r", 25)
+          .attr("cx", randomPixel())
+          .attr("cy", randomPixel())
+          .style("fill", element);
+    });
+
+    // 3. How do we update the attributes of existing elements?
+
+    d3.selectAll("circle")
+        .transition().delay(1000).duration(500) // wait 1 second, then spend .5s changing
+        .style("fill", "orange");
+
+    // Transitions can be overwritten, so if you are going to use another one, make sure it happens AFTER the first is over
+    // When is this block going to trigger? After first one? During first one?
+    d3.selectAll("circle")
+        .transition().delay(1600).duration(500) // wait 1.6 second, then spend .5s changing
+        .attr("r", 20);
+    // If we used .delay(1000) here, this would take over the orange transition above and only the radius would change
+
+    // What about if we introducie a function?
+    d3.selectAll("circle")
+        .transition().delay(2200).duration(500) // wait 2.2 second, then spend .5s changing
+        .attr("cx", randomPixel()); // They all go to same X! Why? Try removing the parens
+    // d3's attr command checks if the parameter is a function. If so, it executes it forEach and then assigns the return value to the attr
 
   </script>
 
