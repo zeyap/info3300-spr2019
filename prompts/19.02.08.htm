@@ -1,0 +1,94 @@
+<html><head>
+<title>INFO 3300 - February 6</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Raleway:400,700" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="../css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="../css/skeleton.css">
+  <link rel="stylesheet" type="text/css" href="../css/custom-style.css">
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+  <script src="../libs/d3.v4.min.js"></script>
+
+  <style>
+
+  .hellodiv {
+    padding: 10px;
+    margin: 20px;
+  }
+
+  </style>
+
+</head>
+<body>
+  <div class="container larger">
+  <h3>Small Prompt for February 8</h3>
+  <p>
+  	<a href="https://d3js.org/">D3</a> is a library that makes it easy to create and manipulate page elements. It's not restricted to SVG elements, but that's what we'll usually use it for. We'll start by using d3 to select DOM elements, create new elements, and modify the content and appearance of elements.
+  </p>
+  <p>
+    You can find a bunch of D3 examples <a href="https://github.com/d3/d3/wiki/Gallery">here</a> and access <a href="https://github.com/d3/d3/blob/master/API.md">D3's online API reference</a>.
+  </p>
+
+  <h5>HTML for today:</h5>
+
+  <div id="d1" class="hellodiv">Hello, DIV #1</div>
+  <div id="d2" class="hellodiv">Hello, DIV #2</div>
+  <div id="d3" class="hellodiv">Hello, DIV #3</div>
+
+  <svg height="300" width="300" style="background: black">
+    <!--- We're going to be populating this dynamically today --->
+  </svg>
+
+
+  <!-- This block will be automatically filled with syntax-highlighted code from the script below -->
+  <h5>Code for today:</h5>
+  <pre>
+    <code id="display" class="hljs javascript">
+    </code>
+  </pre>
+
+  <!--- Code for today's class --->
+  <script id="notes">
+
+  // 1. What the heck is "this" in Javascript functions and events?
+
+
+  // 2 (again). How do we create lots of elements (but not using data just yet)?
+
+  function randomPixel() {
+    return Math.random() * svg.attr("height");
+  }
+
+  let svg = d3.select("svg");
+  let colors = ["yellow", "blue", "aquamarine", "magenta"];
+  for (let i = 0; i < 1000; i++) {
+    let color = colors[Math.floor(Math.random() * colors.length)];
+    svg.append("circle")
+        .attr("r", 3)
+        .attr("cx", randomPixel())
+        .attr("cy", randomPixel())
+        .style("fill", color);
+  }
+
+  // 3. How do we update the attributes of existing elements?
+
+  // What about if we introduce a function?
+  d3.selectAll("circle")
+      .transition().delay(1000).duration(1500) // wait 1 second, then spend 1.5s changing
+      .attr("cx",   randomPixel()    ); // Played with parentheses
+
+
+  </script>
+
+
+  <!--- calls the highlight library to fill the <pre> tag with code --->
+  <script>
+  document.getElementById("display").innerText = document.getElementById("notes").innerText;
+  hljs.initHighlightingOnLoad();
+  </script>
+
+  </div>
+</body>
+</html>
