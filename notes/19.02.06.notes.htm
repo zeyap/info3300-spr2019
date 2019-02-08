@@ -1,0 +1,94 @@
+<html><head>
+<title>INFO 3300 - February 6</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Raleway:400,700" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="../css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="../css/skeleton.css">
+  <link rel="stylesheet" type="text/css" href="../css/custom-style.css">
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+  <script src="../libs/d3.v4.min.js"></script>
+
+  <style>
+
+  .hellodiv {
+    padding: 10px;
+    margin: 20px;
+  }
+
+  </style>
+
+</head>
+<body>
+  <div class="container larger">
+  <h3>Prompt for February 6</h3>
+
+  <p>
+    Execute a <tt>git pull</tt> in your repository directory to download new files. Prompt files won't change after posting, so feel free to modify them as you like. Here once again is an <a href="http://rogerdudler.github.io/git-guide/">informal guide to git</a>.
+  </p>
+
+  <p>
+    To develop efficiently, have a local web server running. Python has a simple, built-in server. Use <tt>python -m http.server</tt> for python 3; use <tt>python -m SimpleHTTPServer 8000</tt> for python 2 (execute python in cmd for version number).
+  </p>
+
+  <p>
+  	<a href="https://d3js.org/">D3</a> is a library that makes it easy to create and manipulate page elements. It's not restricted to SVG elements, but that's what we'll usually use it for. We'll start by using d3 to select DOM elements, create new elements, and modify the content and appearance of elements.
+  </p>
+  <p>
+    You can find a bunch of D3 examples <a href="https://github.com/d3/d3/wiki/Gallery">here</a> and access <a href="https://github.com/d3/d3/blob/master/API.md">D3's online API reference</a>.
+  </p>
+
+  <h5>HTML for today:</h5>
+
+  <div id="d1" class="hellodiv">Hello, DIV #1</div>
+  <div id="d2" class="hellodiv">Hello, DIV #2</div>
+  <div id="d3" class="hellodiv">Hello, DIV #3</div>
+
+  <svg height="250" width="250" style="background: black">
+    <!--- We're going to be populating this dynamically today --->
+  </svg>
+
+
+
+  <!--- Code for today's class --->
+  <script id="notes">
+
+  // 1. How can we select elements? What is the difference between select() and selectAll()?
+
+
+
+  // 2. How can we create new elements, and set their attributes and styles?
+
+
+
+  // 3. How do we create lots of elements (but not using data just yet)?
+
+
+
+  // 4. How do we update the attributes of existing elements?
+
+
+
+
+  </script>
+
+
+
+  <!-- This block will be automatically filled with syntax-highlighted code from the script below -->
+  <h5>Code for today:</h5>
+  <pre>
+    <code id="display" class="hljs javascript">
+    </code>
+  </pre>
+
+  <!--- calls the highlight library to fill the <pre> tag with code --->
+  <script>
+  document.getElementById("display").innerText = document.getElementById("notes").innerText;
+  hljs.initHighlightingOnLoad();
+  </script>
+
+  </div>
+</body>
+</html>
